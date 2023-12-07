@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FF90BC;
+  color: white;
+  font-family: 'Lilita One', sans-serif;
+  height: 100vh;
+  text-align: center;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 0;
+}
+
+@media (min-width: 700px) {
+  h1 {
+    font-size: 6rem
+  }
+
+  .turnoActual {
+    font-size: 2rem;
+  }
+}
+
+.containerGeneral {
+  padding: 0 1rem;
+}
+
+.tablero {
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  height: 20rem;
+  max-width: 25rem;
+}
+
+.fila {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.casillero {
+  cursor: pointer;
+  font-size: 5rem;
+  background-color: white;
+  color: #FF90BC;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.botonReseteo {
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 100vmax;
+  background-color: #8ACDD7;
+  color: white;
+  font-family: 'Lilita One', sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+}
