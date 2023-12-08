@@ -1,16 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useTablero } from '../hook/useTablero'
-import { calcularGanador } from '../helper/CalcularGanador'
 import { MensajeJuego } from './MensajeJuego'
 import { BotonReinicio } from './BotonReinicio'
 
 export const Tablero = ({ reseteoAnimacion, keyParaResetear }) => {
-    const { turnoX, tablero, setTablero, llenarCasillero } = useTablero(calcularGanador)
-
-    //Evalua si hay ganador o empate
-    const ganador = calcularGanador(tablero)
-    const empate = tablero.every((casilla) => casilla !== null)
+    const { turnoX, tablero, setTablero, llenarCasillero, ganador, empate } = useTablero()
 
     //Genera cada casillero con su respectivo indice
     const casillero = (numeroPosicion) => (

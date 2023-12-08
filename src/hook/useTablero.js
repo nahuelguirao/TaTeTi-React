@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { calcularGanador } from '../helper/CalcularGanador'
 
-export const useTablero = (calcularGanador) => {
+export const useTablero = () => {
     const [turnoX, setTurnoX] = useState(true)
     const [tablero, setTablero] = useState(Array(9).fill(null))
 
@@ -16,12 +17,16 @@ export const useTablero = (calcularGanador) => {
         setTurnoX(!turnoX)
     }
 
-
+    //Evalua si hay ganador o empate
+    const ganador = calcularGanador(tablero)
+    const empate = tablero.every((casilla) => casilla !== null)
 
     return {
         turnoX,
         tablero,
         setTablero,
-        llenarCasillero
+        llenarCasillero,
+        ganador,
+        empate
     }
 }
