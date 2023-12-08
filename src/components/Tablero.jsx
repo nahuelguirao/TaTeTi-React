@@ -1,24 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useTablero } from '../hook/useTablero'
 import { calcularGanador } from '../helper/CalcularGanador'
 import { MensajeJuego } from './MensajeJuego'
 import { BotonReinicio } from './BotonReinicio'
-import { motion } from 'framer-motion'
 
 export const Tablero = ({ reseteoAnimacion, keyParaResetear }) => {
-    const [turnoX, setTurnoX] = useState(true)
-    const [tablero, setTablero] = useState(Array(9).fill(null))
+    const { turnoX, tablero, setTablero, llenarCasillero } = useTablero(calcularGanador)
 
-    const llenarCasillero = (numeroPosicion) => {
-        const tableroActual = [...tablero]
-        //Si hay un ganador o el casillero ya fue seleccionado retorna la función
-        if (calcularGanador(tableroActual) || tableroActual[numeroPosicion]) {
-            return
-        }
-        //Intercala entre X y O
-        tableroActual[numeroPosicion] = turnoX ? 'X' : 'O'
-        setTablero(tableroActual)
-        setTurnoX(!turnoX)
-    }
+    //Evalua si hay ganador o empate
+    const ganador = calcularGanador(tablero)
+    const empate = tablero.every((casilla) => casilla !== null)
 
     //Genera cada casillero con su respectivo indice
     const casillero = (numeroPosicion) => (
@@ -26,10 +18,6 @@ export const Tablero = ({ reseteoAnimacion, keyParaResetear }) => {
             {tablero[numeroPosicion]}
         </motion.button>
     )
-
-    //Evalua si hay ganador o empate
-    const ganador = calcularGanador(tablero)
-    const empate = tablero.every((casilla) => casilla !== null)
 
     return (
         <>
