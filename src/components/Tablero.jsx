@@ -9,7 +9,7 @@ export const Tablero = ({ reseteoAnimacion, keyParaResetear }) => {
 
     //Genera cada casillero con su respectivo indice
     const casillero = (numeroPosicion) => (
-        <motion.button className='casillero' onClick={() => llenarCasillero(numeroPosicion)} whileTap={{ scale: 0.5 }} >
+        <motion.button className='casillero' onClick={() => llenarCasillero(numeroPosicion)} whileTap={{ scale: 0.8 }} >
             {tablero[numeroPosicion]}
         </motion.button>
     )
